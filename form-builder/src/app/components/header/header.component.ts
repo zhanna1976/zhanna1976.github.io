@@ -15,40 +15,9 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  destroy$: Subject<boolean> = new Subject<boolean>();
-  public userName$: Observable<string> = this.store$.pipe(
-    select(getUser),
-    takeUntil(this.destroy$)
-  );
+  constructor() {}
 
-  constructor(
-    private authService: AuthenticationService,
-    private store$: Store<User>
-  ) {}
+  ngOnInit(): void {}
 
-  logOut() {
-    this.authService.logout();
-    this.store$.dispatch(removeUser());
-  }
-
-  ngOnInit(): void {
-    if (localStorage.getItem('token')) {
-      this.authService
-        .logInWithToken()
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(user => {
-          if (user) {
-            this.store$.dispatch(setUserWithToken({ ...user }));
-            this.store$
-              .pipe(select(getUsers))
-              .subscribe(item => console.log(item));
-          }
-        });
-    }
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
+  ngOnDestroy() {}
 }
