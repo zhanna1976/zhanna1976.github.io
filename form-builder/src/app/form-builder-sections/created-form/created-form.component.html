@@ -1,0 +1,166 @@
+<section class="form">
+  <div
+    class="form-created"
+    [style.background-color]="this.formStyles.backgroundRGB"
+    [style.border-style]="this.formStyles.borderStyle"
+    [style.border-color]="this.formStyles.borderColorRGB">
+    <div class="form-created__wrapper">
+      <p class="form-created__title" [style.color]="this.formStyles.colorRGB">
+        {{ this.formStyles.formLabel }}
+      </p>
+      <div
+        class="form-created__fields"
+        cdkDropList
+        [cdkDropListData]="fields"
+        (cdkDropListDropped)="drop($event)">
+        <div
+          *ngFor="let field of formList$ | async"
+          cdkDrag
+          class="form-created__input">
+          <div
+            *ngIf="field.field === 'Input'"
+            class="form-created__input"
+            (click)="getField(field.field, field.id)"
+            [attr.id]="field.id">
+            <div class="text-field text-field_floating">
+              <input
+                class="text-field__input"
+                type="text"
+                [placeholder]="getInputStyle(field.id, 'placeholder')"
+                [style]="getInputStyle(field.id, 'input')" />
+              <label class="text-field__label">
+                {{ getInputStyle(field.id, 'label') }}
+                <span
+                  style="color: red"
+                  [ngStyle]="{
+                    visibility: getInputStyle(field.id, 'required')
+                      ? 'visible'
+                      : 'hidden'
+                  }">
+                  *
+                </span></label
+              >
+            </div>
+          </div>
+          <div
+            *ngIf="field.field === 'Textarea'"
+            class="form-created__input"
+            (click)="getField(field.field, field.id)"
+            [attr.id]="field.id">
+            <div class="text-field text-field_floating">
+              <textarea
+                class="text-field__input"
+                [placeholder]="getTextAreaStyle(field.id, 'placeholder')"
+                [style]="getTextAreaStyle(field.id, 'textArea')"></textarea>
+              <label class="text-field__label"
+                >{{ getTextAreaStyle(field.id, 'label') }}
+                <span
+                  style="color: red"
+                  [ngStyle]="{
+                    visibility: getTextAreaStyle(field.id, 'required')
+                      ? 'visible'
+                      : 'hidden'
+                  }">
+                  *
+                </span></label
+              >
+            </div>
+          </div>
+          <div
+            *ngIf="field.field === 'Button'"
+            class="form-created__button-wrapper"
+            (click)="getField(field.field, field.id)"
+            [attr.id]="field.id">
+            <button
+              mat-button
+              class="form-created__button"
+              [style]="getButtonStyle(field.id, 'button')">
+              {{ getButtonStyle(field.id, 'label') }}
+              <span
+                style="color: red"
+                [ngStyle]="{
+                  visibility: getButtonStyle(field.id, 'required')
+                    ? 'visible'
+                    : 'hidden'
+                }">
+                *
+              </span>
+            </button>
+          </div>
+          <div
+            *ngIf="field.field === 'Select'"
+            class="form-created__input"
+            (click)="getField(field.field, field.id)"
+            [attr.id]="field.id">
+            <div class="floating-label">
+              <select
+                class="floating-select"
+                value=""
+                [style]="getSelectStyle(field.id, 'select')">
+                <option
+                  *ngFor="let option of getSelectOptions(field.id) | async"
+                  value="">
+                  {{ option }}
+                </option>
+              </select>
+              <span class="highlight"></span>
+              <label
+                class="label__select"
+                [style]="getSelectStyle(field.id, 'labelStyle')">
+                {{ getSelectStyle(field.id, 'label') }}
+                <span
+                  style="color: red"
+                  [ngStyle]="{
+                    visibility: getSelectStyle(field.id, 'required')
+                      ? 'visible'
+                      : 'hidden'
+                  }">
+                  *
+                </span></label
+              >
+            </div>
+          </div>
+          <div
+            *ngIf="field.field === 'Checkbox'"
+            class="form-created__input"
+            (click)="getField(field.field, field.id)"
+            [attr.id]="field.id">
+            <p
+              class="form-created__title"
+              [style]="getCheckBoxStyle(field.id, 'checkBox')">
+              {{ getCheckBoxStyle(field.id, 'title') }}
+              <span
+                style="color: red"
+                [ngStyle]="{
+                  visibility: getCheckBoxStyle(field.id, 'required')
+                    ? 'visible'
+                    : 'hidden'
+                }">
+                *
+              </span>
+            </p>
+            <input
+              type="checkbox"
+              id="option1"
+              name="option1"
+              value="option1"
+              class="form-created__checkbox" />
+            <label
+              class="form-created__checkbox-label"
+              for="option1"
+              [style]="getCheckBoxStyle(field.id, 'checkBox')">
+              {{ getCheckBoxStyle(field.id, 'label') }}</label
+            ><br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    mat-button
+    [ngStyle]="{ visibility: displaySaveButton() ? 'visible' : 'hidden' }"
+    class="apply__button"
+    (click)="saveForm()">
+    Save form
+  </button>
+</section>

@@ -1,0 +1,42 @@
+@import "../../../styles.scss";
+
+.signup {
+  width: 100%;
+  &__wrapper {
+    margin: 0 auto;
+    padding: 10px 20px;
+    width: 60%;
+    @include displayCenter();
+    flex-direction: column;
+  }
+  &__form {
+    margin: 10px;
+    width: 40%;
+    &-password {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+  }
+  &__password {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1150px) {
+  .signup {
+    &__wrapper {
+      width: 90%;
+    }
+    &__form {
+      margin: 10px;
+      width: 100%;
+    }
+    &__password {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@import "../../../styles.scss";
+
+.header {
+  width: 100%;
+  border: 1px solid #c2d6e1;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 300px;
+  }
+  &__user-name {
+    width: 85px;
+    height: 51px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &-wrapper {
+      font-family: $mainFont;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      display: flex;
+      align-items: center;
+      color: $mainColor;
+    }
+  }
+  &__title {
+    width: 238px;
+    height: 44px;
+    @include displayCenter();
+    a {
+      text-decoration: none;
+      color: $mainColor;
+      font-family: $mainFont;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 44px;
+    }
+  }
+  &__logout {
+    width: 28px;
+    height: 27px;
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
+  }
+}
+
+@media (max-width: 1020px) {
+  .header__wrapper {
+    margin: 5px 30px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 450px) {
+  .header__title {
+    width: 200px;
+    justify-content: flex-start;
+    a {
+      font-size: 20px;
+    }
+  }
+  .header__wrapper {
+    align-items: center;
+  }
+}

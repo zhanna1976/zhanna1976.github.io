@@ -1,0 +1,170 @@
+<form [formGroup]="formStyleGroup">
+  <mat-form-field
+    appearance="fill"
+    class="example-accordion-item-body-wrapper-label">
+    <mat-label class="example-accordion-item-body-wrapper-label-text"
+      >Button Label</mat-label
+    >
+    <input
+      formControlName="buttonLabel"
+      class="example-accordion-item-body-wrapper-input"
+      matInput />
+    <small
+      *ngIf="buttonLabel && buttonLabel.invalid && buttonLabel.touched"
+      style="color: darkred"
+      >Invalid</small
+    >
+  </mat-form-field>
+  <div class="example-accordion-item-body-wrapper-options">
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Width</mat-label
+      >
+      <input
+        formControlName="buttonWidth"
+        [value]="this.formStyleGroup.get('buttonWidth')?.value! | pixelPipe"
+        matInput
+        type="text"
+        placeholder="1"
+        min="10"
+        class="example-accordion-item-body-wrapper-option-input" />
+      <span matSuffix class="example-accordion-item-body-wrapper-option-suffix"
+        >px</span
+      >
+      <small
+        *ngIf="buttonWidth && buttonWidth.invalid && buttonWidth.touched"
+        style="color: darkred"
+        >Invalid</small
+      >
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Height</mat-label
+      >
+      <input
+        formControlName="buttonHeight"
+        [value]="this.formStyleGroup.get('buttonHeight')?.value! | pixelPipe"
+        matInput
+        type="text"
+        placeholder="1"
+        min="10"
+        class="example-accordion-item-body-wrapper-option-input" />
+      <span matSuffix class="example-accordion-item-body-wrapper-option-suffix"
+        >px</span
+      >
+      <small
+        *ngIf="buttonHeight && buttonHeight.invalid && buttonHeight.touched"
+        style="color: darkred"
+        >Invalid</small
+      >
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Font size</mat-label
+      >
+      <input
+        formControlName="buttonFontSize"
+        [value]="this.formStyleGroup.get('buttonFontSize')?.value! | pixelPipe"
+        matInput
+        type="text"
+        placeholder="1"
+        min="10"
+        class="example-accordion-item-body-wrapper-option-input" />
+      <span matSuffix class="example-accordion-item-body-wrapper-option-suffix"
+        >px</span
+      >
+      <small
+        *ngIf="
+          buttonFontSize && buttonFontSize.invalid && buttonFontSize.touched
+        "
+        style="color: darkred"
+        >Invalid</small
+      >
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Font weight</mat-label
+      >
+      <mat-select formControlName="buttonFontWeight">
+        <mat-option value="100">100</mat-option>
+        <mat-option value="500">500</mat-option>
+        <mat-option value="1000">1000</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Color input</mat-label
+      >
+      <input
+        formControlName="buttonColor"
+        matInput
+        type="color"
+        placeholder="22, 33, 77"
+        min="10"
+        class="example-accordion-item-body-wrapper-option-input" />
+      <small
+        *ngIf="buttonColor && buttonColor.invalid && buttonColor.touched"
+        style="color: darkred"
+        >Invalid</small
+      >
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Background</mat-label
+      >
+      <input
+        formControlName="buttonColorBackground"
+        matInput
+        type="color"
+        placeholder="22, 33, 77"
+        min="10"
+        class="example-accordion-item-body-wrapper-option-input" />
+      <small
+        *ngIf="
+          buttonColorBackground &&
+          buttonColorBackground.invalid &&
+          buttonColorBackground.touched
+        "
+        style="color: darkred"
+        >Invalid</small
+      >
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Border type</mat-label
+      >
+      <mat-select formControlName="buttonBorderType">
+        <mat-option value="dotted">dotted</mat-option>
+        <mat-option value="solid">solid</mat-option>
+        <mat-option value="none">none</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-checkbox
+    formControlName="buttonCheckRequired"
+    class="example-accordion-item-body-wrapper-option-label">
+    Required field</mat-checkbox
+  >
+  <div class="buttons__row">
+    <button mat-button class="apply__button" (click)="applyFieldStyles()">
+      Apply
+    </button>
+    <button mat-button class="apply__button" (click)="deleteField()">
+      Delete
+    </button>
+  </div>
+</form>

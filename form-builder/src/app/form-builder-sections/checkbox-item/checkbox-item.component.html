@@ -1,0 +1,109 @@
+<form [formGroup]="formStyleGroup">
+  <mat-form-field
+    appearance="fill"
+    class="example-accordion-item-body-wrapper-label">
+    <mat-label class="example-accordion-item-body-wrapper-label-text"
+      >Checkbox Label</mat-label
+    >
+    <input
+      formControlName="checkBoxLabel"
+      class="example-accordion-item-body-wrapper-input"
+      matInput />
+    <small
+      *ngIf="checkBoxLabel && checkBoxLabel.invalid && checkBoxLabel.touched"
+      style="color: darkred"
+      >Invalid</small
+    >
+  </mat-form-field>
+  <mat-form-field
+    appearance="fill"
+    class="example-accordion-item-body-wrapper-label">
+    <mat-label class="example-accordion-item-body-wrapper-label-text"
+      >Checkbox title</mat-label
+    >
+    <input
+      formControlName="checkBoxTitle"
+      class="example-accordion-item-body-wrapper-input"
+      matInput />
+    <small
+      *ngIf="checkBoxTitle && checkBoxTitle.invalid && checkBoxTitle.touched"
+      style="color: darkred"
+      >Invalid</small
+    >
+  </mat-form-field>
+  <div class="example-accordion-item-body-wrapper-options">
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Font size</mat-label
+      >
+      <input
+        formControlName="checkBoxFontSize"
+        [value]="
+          this.formStyleGroup.get('checkBoxFontSize')?.value! | pixelPipe
+        "
+        matInput
+        type="text"
+        placeholder="1"
+        min="10"
+        class="example-accordion-item-body-wrapper-option-input" />
+      <span matSuffix class="example-accordion-item-body-wrapper-option-suffix"
+        >px</span
+      >
+      <small
+        *ngIf="
+          checkBoxFontSize &&
+          checkBoxFontSize.invalid &&
+          checkBoxFontSize.touched
+        "
+        style="color: darkred"
+        >Invalid</small
+      >
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Font weight</mat-label
+      >
+      <mat-select formControlName="checkBoxFontWeight">
+        <mat-option value="100">100</mat-option>
+        <mat-option value="500">500</mat-option>
+        <mat-option value="1000">1000</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="example-accordion-item-body-wrapper-option">
+      <mat-label class="example-accordion-item-body-wrapper-option-label"
+        >Text color</mat-label
+      >
+      <input
+        formControlName="checkBoxColor"
+        matInput
+        type="color"
+        placeholder="22, 33, 77"
+        min="10"
+        class="example-accordion-item-body-wrapper-option-input" />
+      <small
+        *ngIf="checkBoxColor && checkBoxColor.invalid && checkBoxColor.touched"
+        style="color: darkred"
+        >Invalid</small
+      >
+    </mat-form-field>
+  </div>
+  <mat-checkbox
+    formControlName="checkBoxCheckRequired"
+    class="example-accordion-item-body-wrapper-option-label">
+    Required field</mat-checkbox
+  >
+  <div class="buttons__row">
+    <button mat-button class="apply__button" (click)="applyFieldStyles()">
+      Apply
+    </button>
+    <button mat-button class="apply__button" (click)="deleteField()">
+      Delete
+    </button>
+  </div>
+</form>

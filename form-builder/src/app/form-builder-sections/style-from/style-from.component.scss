@@ -1,0 +1,129 @@
+@import "../../../styles.scss";
+
+.example-accordion__position {
+  width: 100%;
+}
+.example-accordion {
+  max-width: 500px;
+}
+.example-accordion-item {
+  display: block;
+  border: solid 1px #ccc;
+  + {
+    .example-accordion-item {
+      border-top: none;
+    }
+  }
+  &:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  &:last-child {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+}
+.example-accordion-item-header {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding: 16px;
+  font-family: $mainFont;
+  color: $mainColor;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  &:hover {
+    cursor: pointer;
+    background-color: #eef2f4;
+  }
+}
+.example-accordion-item-description {
+  color: #c2d6e1;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  font-family: $mainFont;
+}
+.example-accordion-item-body {
+  padding: 16px;
+}
+.example-accordion-item-body-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &-label {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    min-height: 50px;
+    &-text {
+      font-family: $mainFont;
+      color: $mainColor;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+  &-options {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &-option {
+    width: 185px;
+    &-label,
+    &-suffix {
+      font-family: $mainFont;
+      color: $mainColor;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+    }
+    &-label {
+      align-self: center;
+    }
+    &-suffix {
+      text-align: center;
+    }
+  }
+}
+.apply__button {
+  background: #eef2f4;
+  border-radius: 4px;
+  text-align: center;
+  width: 155px;
+  height: 30px;
+  padding-bottom: 3px;
+  font-family: $mainFont;
+  color: $mainColor;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+.buttons__row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.add__field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  .apply__button-add {
+    width: 66px;
+    height: 55px;
+    margin-left: 5px;
+  }
+}
+

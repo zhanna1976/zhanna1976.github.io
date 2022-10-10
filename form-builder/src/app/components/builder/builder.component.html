@@ -1,0 +1,12 @@
+<section class="builder">
+  <div class="builder__wrapper" cdkDropListGroup>
+    <app-style-from
+      class="builder__item"
+      [field]="field.field"
+      [fieldOBJ]="field"></app-style-from>
+    <app-created-form
+      class="builder__item"
+      (fieldStyleEvent)="getField($event)"></app-created-form>
+    <app-form-items class="builder__item"></app-form-items>
+  </div>
+</section>

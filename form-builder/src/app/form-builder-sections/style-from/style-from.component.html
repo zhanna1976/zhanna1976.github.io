@@ -1,0 +1,145 @@
+<cdk-accordion class="example-accordion example-accordion__position">
+  <cdk-accordion-item
+    *ngFor="let item of items; let index = index"
+    #accordionItem="cdkAccordionItem"
+    class="example-accordion-item"
+    role="button"
+    tabindex="0"
+    [attr.id]="'accordion-header-' + index"
+    [attr.aria-expanded]="accordionItem.expanded"
+    [attr.aria-controls]="'accordion-body-' + index">
+    <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+      {{ item }}
+      <span class="example-accordion-item-description">
+        {{ accordionItem.expanded ? 'close' : 'open' }}
+      </span>
+    </div>
+    <div
+      class="example-accordion-item-body"
+      role="region"
+      [style.display]="accordionItem.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-' + index"
+      [attr.aria-labelledby]="'accordion-header-' + index">
+      <form
+        *ngIf="index === 0; else elseBlock"
+        class="example-accordion-item-body-wrapper"
+        [formGroup]="formGeneral">
+        <mat-form-field
+          appearance="fill"
+          class="example-accordion-item-body-wrapper-label">
+          <mat-label class="example-accordion-item-body-wrapper-label-text"
+            >Form Label</mat-label
+          >
+          <input
+            formControlName="formLabel"
+            class="example-accordion-item-body-wrapper-input"
+            matInput />
+          <small
+            *ngIf="formLabel && formLabel.invalid && formLabel.touched"
+            style="color: darkred"
+            >Invalid</small
+          >
+        </mat-form-field>
+        <form
+          class="example-accordion-item-body-wrapper-options"
+          [formGroup]="formGeneral">
+          <mat-form-field
+            appearance="fill"
+            class="example-accordion-item-body-wrapper-option">
+            <mat-label class="example-accordion-item-body-wrapper-option-label"
+              >Text color</mat-label
+            >
+            <input
+              formControlName="colorRGB"
+              matInput
+              type="color"
+              placeholder="22,33,77"
+              min="10"
+              class="example-accordion-item-body-wrapper-option-input" />
+            <small
+              *ngIf="colorRGB && colorRGB.invalid && colorRGB.touched"
+              style="color: darkred"
+              >Invalid</small
+            >
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            class="example-accordion-item-body-wrapper-option">
+            <mat-label class="example-accordion-item-body-wrapper-option-label"
+              >Background</mat-label
+            >
+            <input
+              formControlName="backgroundRGB"
+              matInput
+              type="color"
+              placeholder="22, 33, 77"
+              min="10"
+              class="example-accordion-item-body-wrapper-option-input" />
+            <small
+              *ngIf="
+                backgroundRGB && backgroundRGB.invalid && backgroundRGB.touched
+              "
+              style="color: darkred"
+              >Invalid</small
+            >
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            class="example-accordion-item-body-wrapper-option">
+            <mat-label class="example-accordion-item-body-wrapper-option-label"
+              >Border type</mat-label
+            >
+            <mat-select formControlName="borderStyle">
+              <mat-option value="dotted">dotted</mat-option>
+              <mat-option value="solid">solid</mat-option>
+              <mat-option value="none">none</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            class="example-accordion-item-body-wrapper-option">
+            <mat-label class="example-accordion-item-body-wrapper-option-label"
+              >Border color</mat-label
+            >
+            <input
+              formControlName="borderColorRGB"
+              matInput
+              type="color"
+              placeholder="22, 33, 77"
+              min="10"
+              class="example-accordion-item-body-wrapper-option-input" />
+            <small
+              *ngIf="
+                borderColorRGB &&
+                borderColorRGB.invalid &&
+                borderColorRGB.touched
+              "
+              style="color: darkred"
+              >Invalid</small
+            >
+          </mat-form-field>
+        </form>
+        <button mat-button class="apply__button" (click)="applyFormStyles()">
+          Apply
+        </button>
+      </form>
+      <ng-template #elseBlock>
+        <div *ngIf="field === 'Input'">
+          <app-input-item [fieldOBJ]="fieldOBJ"></app-input-item>
+        </div>
+        <div *ngIf="field === 'Textarea'">
+          <app-textarea-item [fieldOBJ]="fieldOBJ"></app-textarea-item>
+        </div>
+        <div *ngIf="field === 'Select'">
+          <app-select-item [fieldOBJ]="fieldOBJ"></app-select-item>
+        </div>
+        <div *ngIf="field === 'Button'">
+          <app-button-item [fieldOBJ]="fieldOBJ"></app-button-item>
+        </div>
+        <div *ngIf="field === 'Checkbox'">
+          <app-checkbox-item [fieldOBJ]="fieldOBJ"></app-checkbox-item>
+        </div>
+      </ng-template>
+    </div>
+  </cdk-accordion-item>
+</cdk-accordion>
